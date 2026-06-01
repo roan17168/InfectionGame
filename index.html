@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathogen Slayer — Campaign</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PREGAME LOBBY -->
+<div id="lobbyScreen" class="screen active">
+  <div class="lobby-container">
+    <h1>🧬 PATHOGEN SLAYER</h1>
+    <p class="subtitle">Defend the Body. Defeat the Disease.</p>
+    
+    <div class="lobby-grid">
+      <div class="panel stats-panel">
+        <h2>📊 Campaign Stats</h2>
+        <div class="stat-row"><span>Level:</span><span id="lobbyLevel">1 / 25</span></div>
+        <div class="stat-row"><span>Currency:</span><span id="lobbyCurrency">0 💰</span></div>
+        <div class="stat-row"><span>Best Time:</span><span id="lobbyBestTime">--:--</span></div>
+        <div class="stat-row"><span>Total Kills:</span><span id="lobbyKills">0</span></div>
+        <button id="startBtn" class="btn btn-primary">START CAMPAIGN</button>
+      </div>
+
+      <div class="panel shop-panel">
+        <h2>⚔️ Weapon Shop</h2>
+        <div id="weaponShop" class="weapon-grid"></div>
+      </div>
+
+      <div class="panel upgrades-panel">
+        <h2>🔧 Upgrades</h2>
+        <div id="upgradesList" class="upgrades-list"></div>
+      </div>
+
+      <div class="panel loadout-panel">
+        <h2>🎯 Current Loadout</h2>
+        <div id="loadoutDisplay" class="loadout-display">
+          <div class="loadout-slot"><span>Primary:</span><span id="primaryWeapon">None</span></div>
+          <div class="loadout-slot"><span>Secondary:</span><span id="secondaryWeapon">None</span></div>
+          <div class="loadout-slot"><span>Health:</span><span id="loadoutHealth">100</span></div>
+          <div class="loadout-slot"><span>Speed Bonus:</span><span id="loadoutSpeed">0%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel leaderboard-panel">
+      <h2>🏆 Leaderboard</h2>
+      <div id="leaderboard" class="leaderboard-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div id="gameScreen" class="screen">
+  <canvas id="gameCanvas" width="1200" height="700"></canvas>
+  
+  <div class="game-hud">
+    <div class="hud-left">
+      <div class="hud-item"><span class="label">Level:</span><span id="hudLevel">1</span></div>
+      <div class="hud-item"><span class="label">Health:</span><span id="hudHealth">100</span></div>
+      <div class="hud-item"><span class="label">Currency:</span><span id="hudCurrency">0</span></div>
+    </div>
+    
+    <div class="hud-center">
+      <div class="hud-item"><span class="label">Time:</span><span id="hudTime">00:00</span></div>
+      <div class="hud-item"><span class="label">Kills:</span><span id="hudKills">0</span></div>
+    </div>
+    
+    <div class="hud-right">
+      <div class="hud-item"><span class="label">Weapon:</span><span id="hudWeapon">Pistol</span></div>
+      <div class="hud-item"><span class="label">Ammo:</span><span id="hudAmmo">∞</span></div>
+    </div>
+  </div>
+
+  <div id="levelComplete" class="modal hidden">
+    <div class="modal-content">
+      <h2>✅ Level Complete!</h2>
+      <div id="levelStats"></div>
+      <button id="nextLevelBtn" class="btn btn-primary">NEXT LEVEL</button>
+      <button id="lobbyBtn" class="btn btn-secondary">RETURN TO LOBBY</button>
+    </div>
+  </div>
+
+  <div id="gameOver" class="modal hidden">
+    <div class="modal-content">
+      <h2>💀 Game Over</h2>
+      <div id="gameOverStats"></div>
+      <button id="retryBtn" class="btn btn-primary">RETRY LEVEL</button>
+      <button id="lobbyBtn2" class="btn btn-secondary">RETURN TO LOBBY</button>
+    </div>
+  </div>
+
+  <div id="campaignComplete" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎉 CAMPAIGN COMPLETE!</h2>
+      <div id="campaignStats"></div>
+      <button id="restartCampaignBtn" class="btn btn-primary">RESTART CAMPAIGN</button>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
